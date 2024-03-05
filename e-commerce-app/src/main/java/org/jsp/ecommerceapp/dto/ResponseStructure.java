@@ -1,4 +1,4 @@
-package rg.jsp.ecommerceapp.dto;
+package org.jsp.ecommerceapp.dto;
 
 public class ResponseStructure<T> {
 	private String message;
