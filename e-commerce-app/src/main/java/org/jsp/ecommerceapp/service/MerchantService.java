@@ -24,23 +24,23 @@ public class MerchantService {
 		structure.setStatusCode(HttpStatus.CREATED.value());
 		return new ResponseEntity<>(structure, HttpStatus.CREATED);
 	}
-	
+
 	public ResponseEntity<ResponseStructure<Merchant>> updateMerchant(Merchant merchant) {
 		ResponseStructure<Merchant> structure = new ResponseStructure<>();
-		Optional<Merchant> recMerchant=merchantDao.findById(merchant.getId());
-		if(recMerchant.isPresent()) {
-		structure.setMessage("Merchant saved");
-		structure.setBody(merchantDao.saveMerchant(merchant));
-		structure.setStatusCode(HttpStatus.CREATED.value());
-		return new ResponseEntity<>(structure, HttpStatus.CREATED);
+		Optional<Merchant> recMerchant = merchantDao.findById(merchant.getId());
+		if (recMerchant.isPresent()) {
+			structure.setMessage("Merchant saved");
+			structure.setBody(merchantDao.saveMerchant(merchant));
+			structure.setStatusCode(HttpStatus.CREATED.value());
+			return new ResponseEntity<>(structure, HttpStatus.CREATED);
 		}
 		throw new IdNotFoundException();
 	}
-	
-	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(String email,String password) {
-		ResponseStructure<Merchant> structure=new ResponseStructure<>();
-		Optional<Merchant> recMerchant=merchantDao.verifyMerchant(email, password);
-		if(recMerchant.isPresent()) {
+
+	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(String email, String password) {
+		ResponseStructure<Merchant> structure = new ResponseStructure<>();
+		Optional<Merchant> recMerchant = merchantDao.verifyMerchant(email, password);
+		if (recMerchant.isPresent()) {
 			structure.setMessage("Merchant Found");
 			structure.setBody(recMerchant.get());
 			structure.setStatusCode(HttpStatus.FOUND.value());
@@ -48,11 +48,11 @@ public class MerchantService {
 		}
 		throw new MerchantNotFoundException("Either Email or Password is invalid");
 	}
-	
-	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(long phone,String password) {
-		ResponseStructure<Merchant> structure=new ResponseStructure<>();
-		Optional<Merchant> recMerchant=merchantDao.verifyMerchant(phone, password);
-		if(recMerchant.isPresent()) {
+
+	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(long phone, String password) {
+		ResponseStructure<Merchant> structure = new ResponseStructure<>();
+		Optional<Merchant> recMerchant = merchantDao.verifyMerchant(phone, password);
+		if (recMerchant.isPresent()) {
 			structure.setMessage("Merchant Found");
 			structure.setBody(recMerchant.get());
 			structure.setStatusCode(HttpStatus.FOUND.value());
@@ -60,11 +60,11 @@ public class MerchantService {
 		}
 		throw new MerchantNotFoundException("Either Email or Password is invalid");
 	}
-	
-	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(int id,String password) {
-		ResponseStructure<Merchant> structure=new ResponseStructure<>();
-		Optional<Merchant> recMerchant=merchantDao.verifyMerchant(id, password);
-		if(recMerchant.isPresent()) {
+
+	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(int id, String password) {
+		ResponseStructure<Merchant> structure = new ResponseStructure<>();
+		Optional<Merchant> recMerchant = merchantDao.verifyMerchant(id, password);
+		if (recMerchant.isPresent()) {
 			structure.setMessage("Merchant Found");
 			structure.setBody(recMerchant.get());
 			structure.setStatusCode(HttpStatus.FOUND.value());
@@ -72,7 +72,5 @@ public class MerchantService {
 		}
 		throw new MerchantNotFoundException("Either Email or Password is invalid");
 	}
-	
-	
-	
+
 }

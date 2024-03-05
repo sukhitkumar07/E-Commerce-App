@@ -1,8 +1,8 @@
 package org.jsp.ecommerceapp.excepton;
 
-public class MerchantNotFoundException extends RuntimeException{
+public class MerchantNotFoundException extends RuntimeException {
 
-	public MerchantNotFoundException(String message){
+	public MerchantNotFoundException(String message) {
 		super(message);
 	}
 }

@@ -10,8 +10,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class ECommerceAppExceptionHandler extends ResponseEntityExceptionHandler {
 
-	
-
 	@ExceptionHandler(IdNotFoundException.class)
 	public ResponseEntity<ResponseStructure<String>> handleINFE(IdNotFoundException exception) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
@@ -20,8 +18,7 @@ public class ECommerceAppExceptionHandler extends ResponseEntityExceptionHandler
 		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 	}
-	
-	
+
 	@ExceptionHandler(UserNotFoundException.class)
 	public ResponseEntity<ResponseStructure<String>> handleUNFE(UserNotFoundException exception) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
@@ -30,7 +27,7 @@ public class ECommerceAppExceptionHandler extends ResponseEntityExceptionHandler
 		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 	}
-	
+
 	@ExceptionHandler(MerchantNotFoundException.class)
 	public ResponseEntity<ResponseStructure<String>> handleUNFE(MerchantNotFoundException exception) {
 		ResponseStructure<String> structure = new ResponseStructure<>();
@@ -41,4 +38,3 @@ public class ECommerceAppExceptionHandler extends ResponseEntityExceptionHandler
 	}
 
 }
-
