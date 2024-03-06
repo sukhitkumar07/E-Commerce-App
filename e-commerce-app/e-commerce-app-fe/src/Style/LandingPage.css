@@ -1,0 +1,10 @@
+.landingpage {
+    display: flex;
+    justify-content: center;
+
+}
+
+.landingpage img{
+    height: 30px;
+    width: 30px;
+}
