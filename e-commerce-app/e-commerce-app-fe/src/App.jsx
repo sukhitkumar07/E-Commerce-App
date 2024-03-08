@@ -4,6 +4,9 @@ import LandingPage from "./Component/LandingPage";
 import {BrowserRouter,Routes,Route} from "react-router-dom"; 
 import UserLogin from "./Component/UserLogin";
 import MerchantLogin from "./Component/MerchantLogin";
+import MerchantSignUp from "./Component/MerchantSignUp";
+import MerchantHomePage from "./Component/MerchantHomePage";
+import MerchantUpdate from "./Component/MerchantUpdate";
 function App() {
   return (
     <div className="App">
@@ -13,6 +16,9 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/user" element={<UserLogin/>}/>
           <Route path="/merchant" element={<MerchantLogin/>}/>
+          <Route path="/merchantsignup" element={<MerchantSignUp/>}/>
+          <Route path="/merchanthomepage/:id" element={<MerchantHomePage/>}/>
+          <Route path="/merchanthomepage/update/:id" element={<MerchantUpdate/>}/>
         </Routes>
       </BrowserRouter>
     </div>

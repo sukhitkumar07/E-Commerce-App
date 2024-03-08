@@ -25,6 +25,18 @@ public class MerchantService {
 		return new ResponseEntity<>(structure, HttpStatus.CREATED);
 	}
 
+	public ResponseEntity<ResponseStructure<Merchant>> findById(int id) {
+		ResponseStructure<Merchant> structure=new ResponseStructure<>();
+		Optional<Merchant> recMerchant=merchantDao.findById(id);
+		if(recMerchant.isPresent()) {
+			structure.setMessage("Merchant Found");
+			structure.setBody(recMerchant.get());
+			structure.setStatusCode(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<Merchant>>(structure,HttpStatus.OK);
+		}
+		throw new IdNotFoundException();
+	}
+	
 	public ResponseEntity<ResponseStructure<Merchant>> updateMerchant(Merchant merchant) {
 		ResponseStructure<Merchant> structure = new ResponseStructure<>();
 		Optional<Merchant> recMerchant = merchantDao.findById(merchant.getId());
@@ -43,8 +55,8 @@ public class MerchantService {
 		if (recMerchant.isPresent()) {
 			structure.setMessage("Merchant Found");
 			structure.setBody(recMerchant.get());
-			structure.setStatusCode(HttpStatus.FOUND.value());
-			return new ResponseEntity<ResponseStructure<Merchant>>(structure, HttpStatus.FOUND);
+			structure.setStatusCode(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<Merchant>>(structure, HttpStatus.OK);
 		}
 		throw new MerchantNotFoundException("Either Email or Password is invalid");
 	}

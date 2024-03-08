@@ -1,18 +1,20 @@
 package org.jsp.ecommerceapp.controller;
 
+
 import org.jsp.ecommerceapp.dto.ResponseStructure;
 import org.jsp.ecommerceapp.model.Merchant;
 import org.jsp.ecommerceapp.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/merchants")
 public class MerchantController {
@@ -28,20 +30,25 @@ public class MerchantController {
 	public ResponseEntity<ResponseStructure<Merchant>> updateMerchant(@RequestBody Merchant merchant) {
 		return merchantService.updateMerchant(merchant);
 	}
+	
+	@PostMapping("/{id}")
+	public ResponseEntity<ResponseStructure<Merchant>> findById(@PathVariable int id) {
+		return merchantService.findById(id);
+	}
 
-	@GetMapping("/verify-by-email")
+	@PostMapping("/verify-by-email")
 	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(@RequestParam String email,
 			@RequestParam String password) {
 		return merchantService.verifyMerchant(email, password);
 	}
 
-	@GetMapping("/verify-by-phone")
+	@PostMapping("/verify-by-phone")
 	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(@RequestParam long phone,
 			@RequestParam String password) {
 		return merchantService.verifyMerchant(phone, password);
 	}
 
-	@GetMapping("/verify-by-id")
+	@PostMapping("/verify-by-id")
 	public ResponseEntity<ResponseStructure<Merchant>> verifyMerchant(@RequestParam int id,
 			@RequestParam String password) {
 		return merchantService.verifyMerchant(id, password);

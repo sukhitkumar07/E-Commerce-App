@@ -1,8 +1,10 @@
 import Form from 'react-bootstrap/Form';
+import "../Style/UserLogin.css"
 const UserLogin = () => {
     return ( 
         <div className="userlogin">
             <Form>
+                <h2>User Login Page</h2>
                 <Form.Group className="mb-3" controlId="formGroupEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
