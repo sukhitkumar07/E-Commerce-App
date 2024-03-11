@@ -36,11 +36,10 @@ function MerchantSignUp() {
                 <input type="tel"  value={phone}  onChange={(e)=>{setphone(e.target.value)}} placeholder="Enter the Phone" />
                 <label htmlFor="">Password</label>
                 <input type="password" value={password} onChange={(e)=>{setpassword(e.target.value)}} placeholder="Enter the Password" />
-
                 <button className="btn btn-warning" >Submit</button>
             </form>
         </div>
     );
 }
-
+   
 export default MerchantSignUp;

@@ -43,8 +43,8 @@ public class UserService {
 		if (recUser.isPresent()) {
 			structure.setMessage("User Found");
 			structure.setBody(recUser.get());
-			structure.setStatusCode(HttpStatus.FOUND.value());
-			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.FOUND);
+			structure.setStatusCode(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 		}
 		throw new UserNotFoundException("Either Email or Password is Invalid");
 	}
@@ -55,8 +55,8 @@ public class UserService {
 		if (recUser.isPresent()) {
 			structure.setMessage("User Found");
 			structure.setBody(recUser.get());
-			structure.setStatusCode(HttpStatus.FOUND.value());
-			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.FOUND);
+			structure.setStatusCode(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 		}
 		throw new UserNotFoundException("Either Phone or Password is Invalid");
 	}
@@ -67,8 +67,8 @@ public class UserService {
 		if (recUser.isPresent()) {
 			structure.setMessage("User Found");
 			structure.setBody(recUser.get());
-			structure.setStatusCode(HttpStatus.FOUND.value());
-			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.FOUND);
+			structure.setStatusCode(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 		}
 		throw new UserNotFoundException("Either Id or Password is Invalid");
 

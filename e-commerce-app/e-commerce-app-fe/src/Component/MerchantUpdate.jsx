@@ -1,6 +1,5 @@
 import axios from "axios"
 import { useState } from "react"
-
 const MerchantUpdate = () => {
     let [name,setname]=useState("")
     let [gst_number,setgst_number]=useState("")
