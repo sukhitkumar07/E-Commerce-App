@@ -35,5 +35,11 @@ public class MerchantDao {
 	public Optional<Merchant> verifyMerchant(int id,String password) {
 		return merchantRepository.verifyMerchant(id, password);
 	}
+	
+	public Optional<Merchant> findByToken(String token) {
+		return merchantRepository.findByToken(token);
+	}
+	
+	
 }
 

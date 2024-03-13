@@ -8,6 +8,7 @@ import MerchantSignUp from "./Component/MerchantSignUp";
 import MerchantHomePage from "./Component/MerchantHomePage";
 import MerchantUpdate from "./Component/MerchantUpdate";
 import UserHomePage from "./Component/UserHomePage";
+import Error from "./Component/Error";
 function App() {
   return (
     <div className="App">
@@ -15,10 +16,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/*" element={<Error/>}/>
           <Route path="/user" element={<UserLogin/>}/>
           <Route path="/merchant" element={<MerchantLogin/>}/>
           <Route path="/merchantsignup" element={<MerchantSignUp/>}/>
-          <Route path="/merchanthomepage/:id" element={<MerchantHomePage/>}/>
+          <Route path="/merchanthomepage/*" element={<MerchantHomePage/>}/>
           <Route path="/merchanthomepage/update/:id" element={<MerchantUpdate/>}/>
           <Route path="/userhomepage" element={<UserHomePage/>}/>
         </Routes>

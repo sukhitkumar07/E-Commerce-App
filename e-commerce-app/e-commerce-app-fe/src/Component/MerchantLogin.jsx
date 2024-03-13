@@ -12,7 +12,8 @@ const MerchantLogin = () => {
         e.preventDefault();
         axios.post(`http://localhost:8080/merchants/verify-by-email?email=${email}&password=${password}`)
         .then((res)=>{
-           navigate(`/merchanthomepage/${res.data.body.id}`);
+            alert("Login Successful")
+           navigate(`/merchanthomepage`);
         })
         .catch((rej)=>{
             alert("Invalid Credentials");
