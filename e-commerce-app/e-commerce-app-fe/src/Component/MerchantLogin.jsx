@@ -13,7 +13,10 @@ const MerchantLogin = () => {
         axios.post(`http://localhost:8080/merchants/verify-by-email?email=${email}&password=${password}`)
         .then((res)=>{
             alert("Login Successful")
+            localStorage.setItem("Merchant",JSON.stringify(res.data.body));
+           
            navigate(`/merchanthomepage`);
+         
         })
         .catch((rej)=>{
             alert("Invalid Credentials");

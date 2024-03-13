@@ -6,9 +6,9 @@ import UserLogin from "./Component/UserLogin";
 import MerchantLogin from "./Component/MerchantLogin";
 import MerchantSignUp from "./Component/MerchantSignUp";
 import MerchantHomePage from "./Component/MerchantHomePage";
-import MerchantUpdate from "./Component/MerchantUpdate";
 import UserHomePage from "./Component/UserHomePage";
 import Error from "./Component/Error";
+import Protect from "./Component/Protect";
 function App() {
   return (
     <div className="App">
@@ -20,8 +20,7 @@ function App() {
           <Route path="/user" element={<UserLogin/>}/>
           <Route path="/merchant" element={<MerchantLogin/>}/>
           <Route path="/merchantsignup" element={<MerchantSignUp/>}/>
-          <Route path="/merchanthomepage/*" element={<MerchantHomePage/>}/>
-          <Route path="/merchanthomepage/update/:id" element={<MerchantUpdate/>}/>
+          <Route path="/merchanthomepage/*" element={<Protect Child={MerchantHomePage}/>}/>
           <Route path="/userhomepage" element={<UserHomePage/>}/>
         </Routes>
       </BrowserRouter>
