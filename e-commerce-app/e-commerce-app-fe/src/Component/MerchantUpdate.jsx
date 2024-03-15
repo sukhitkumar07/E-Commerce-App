@@ -1,6 +1,8 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import "../Style/MerchantUpdate.css"
 const MerchantUpdate = () => {
+    let [id,setId]=useState("")
     let [name,setname]=useState("")
     let [gst_number,setgst_number]=useState("")
     let [email,setemail]=useState("")
@@ -8,15 +10,36 @@ const MerchantUpdate = () => {
     let [password,setpassword]=useState("")
    
 
+let data = {id,name,gst_number,email,phone,password}
+let merchant=JSON.parse(localStorage.getItem("Merchant"))
 
+useEffect(()=>{
+    setId(merchant.id)
+    setname(merchant.name)
+    setgst_number(merchant.gst_number)
+    setemail(merchant.email)
+    setphone(merchant.phone)
+    setpassword(merchant.password)
+},[])
 
-    function update(){
-        axios.put()
+    function update(e){
+        e.preventDefault();
+        axios.put('http://localhost:8080/merchants',data)
+        .then((res)=>{
+            console.log(res);
+            alert("Merchant Added successfully")
+        })
+        .catch((rej)=>{
+            console.log(rej);
+            alert("Can't Add Merchant ")
+        })
     }
 
     return ( 
         <div className="merchantupdate">
             <form onSubmit={update} action="">
+                <label htmlFor="">Id</label>
+                <input type="number"  value={id} onChange={(e)=>{setId(e.target.value)}} placeholder="Enter the Id" />
                 <label htmlFor="">Name</label>
                 <input type="text"  value={name} onChange={(e)=>{setname(e.target.value)}} placeholder="Enter the Name" />
                 <label htmlFor="">Gst_Number</label>

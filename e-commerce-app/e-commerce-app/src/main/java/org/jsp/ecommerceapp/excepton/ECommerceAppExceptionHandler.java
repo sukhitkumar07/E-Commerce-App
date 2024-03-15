@@ -36,5 +36,16 @@ public class ECommerceAppExceptionHandler extends ResponseEntityExceptionHandler
 		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(ProductNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> handlePNFE(ProductNotFoundException exception) {
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setMessage("Can not Find Product");
+		structure.setBody(exception.getMessage()); 
+		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.NOT_FOUND);
+	}
+	
+	
 
 }
