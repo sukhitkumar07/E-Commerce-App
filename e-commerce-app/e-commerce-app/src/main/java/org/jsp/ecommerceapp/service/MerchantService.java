@@ -50,8 +50,15 @@ public class MerchantService {
 		ResponseStructure<Merchant> structure = new ResponseStructure<>();
 		Optional<Merchant> recMerchant = merchantDao.findById(merchant.getId());
 		if (recMerchant.isPresent()) {
+			Merchant dbMerchant=recMerchant.get();
+			dbMerchant.setEmail(merchant.getEmail());
+			dbMerchant.setGst_number(merchant.getGst_number());
+			dbMerchant.setId(merchant.getId());
+			dbMerchant.setName(merchant.getName());
+			dbMerchant.setPassword(merchant.getPassword());
+			dbMerchant.setPhone(merchant.getPhone());
 			structure.setMessage("Merchant saved");
-			structure.setBody(merchantDao.saveMerchant(merchant));
+			structure.setBody(merchantDao.saveMerchant(dbMerchant));
 			structure.setStatusCode(HttpStatus.CREATED.value());
 			return new ResponseEntity<>(structure, HttpStatus.CREATED);
 		}
@@ -62,6 +69,10 @@ public class MerchantService {
 		ResponseStructure<Merchant> structure = new ResponseStructure<>();
 		Optional<Merchant> recMerchant = merchantDao.verifyMerchant(email, password);
 		if (recMerchant.isPresent()) {
+			Merchant merchant=recMerchant.get();
+			if(merchant.getStatus().equals(AccountStatus.IN_ACTIVE.toString())) {
+				throw new IllegalStateException("Account is not Activated");
+			}
 			structure.setMessage("Merchant Found");
 			structure.setBody(recMerchant.get());
 			structure.setStatusCode(HttpStatus.OK.value());
@@ -74,6 +85,10 @@ public class MerchantService {
 		ResponseStructure<Merchant> structure = new ResponseStructure<>();
 		Optional<Merchant> recMerchant = merchantDao.verifyMerchant(phone, password);
 		if (recMerchant.isPresent()) {
+			Merchant merchant=recMerchant.get();
+			if(merchant.getStatus().equals(AccountStatus.IN_ACTIVE.toString())) {
+				throw new IllegalStateException("Account is not Activated");
+			}
 			structure.setMessage("Merchant Found");
 			structure.setBody(recMerchant.get());
 			structure.setStatusCode(HttpStatus.OK.value());
@@ -86,6 +101,10 @@ public class MerchantService {
 		ResponseStructure<Merchant> structure = new ResponseStructure<>();
 		Optional<Merchant> recMerchant = merchantDao.verifyMerchant(id, password);
 		if (recMerchant.isPresent()) {
+			Merchant merchant=recMerchant.get();
+			if(merchant.getStatus().equals(AccountStatus.IN_ACTIVE.toString())) {
+				throw new IllegalStateException("Account is not Activated");
+			}
 			structure.setMessage("Merchant Found");
 			structure.setBody(recMerchant.get());
 			structure.setStatusCode(HttpStatus.OK.value());

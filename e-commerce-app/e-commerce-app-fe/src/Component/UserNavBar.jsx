@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import "../Style/MerchantNavBar.css";
-const MerchantNavBar = () => {
+const UserNavBar = () => {
     return (
         <nav id="navbar">
             <div className="logo">
                 <h1>Shoppers<span>Cart</span></h1>
             </div>
             <div className="option">
-                <Link to="/merchanthomepage/productview">View Product </Link>
-                <Link to="/merchanthomepage/addproduct">Add Product </Link>
+                <Link to="/userhomepage/viewproduct">View Product </Link>
             </div>
             <div className="account">
                 <Dropdown>
@@ -19,13 +17,13 @@ const MerchantNavBar = () => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item href="/merchanthomepage/updatemerchant">Edit Account</Dropdown.Item>
+                        <Dropdown.Item href="/userhomepage/updateuser">Edit Account</Dropdown.Item>
                         <Dropdown.Item href="/">LogOut</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
         </nav>
-    );
+      );
 }
-
-export default MerchantNavBar;
+ 
+export default UserNavBar;

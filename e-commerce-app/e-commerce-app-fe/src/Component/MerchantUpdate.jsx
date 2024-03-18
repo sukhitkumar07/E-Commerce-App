@@ -27,11 +27,11 @@ useEffect(()=>{
         axios.put('http://localhost:8080/merchants',data)
         .then((res)=>{
             console.log(res);
-            alert("Merchant Added successfully")
+            alert("Merchant Updated successfully")
         })
         .catch((rej)=>{
             console.log(rej);
-            alert("Can't Add Merchant ")
+            alert("Can't Update Merchant ")
         })
     }
 

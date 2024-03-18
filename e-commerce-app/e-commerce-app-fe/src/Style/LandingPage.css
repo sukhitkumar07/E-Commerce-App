@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 80vh;
+    height: 100vh;
 
 }
 
@@ -25,4 +25,8 @@
     font-size: large;
     color: black;
     font-family: cursive;
+}
+
+.landingpage{
+    background: linear-gradient(rgb(231, 92, 6),white,green);
 }

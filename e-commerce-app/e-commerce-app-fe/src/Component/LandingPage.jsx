@@ -5,12 +5,12 @@ const LandingPage = () => {
     <div className="landingpage">
       
       <div className="user">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiwNBugC_5dIVMJzel98mzSXbbxScMnadIfqmhFjiP9g&s" alt="" /><br />
-      <Link to="/merchant">Merchant</Link>
+      
+      <Link to="/merchant"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/merchant-3-911063.png" alt="" /><br />Merchant</Link>
       </div>
       <div className="merchant">
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/corporate-user-icon.png" alt="" /><br />
-      <Link to="/user">User</Link>
+      
+      <Link to="/user"><img src="https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/corporate-user-icon.png" alt="" /><br />User</Link>
       </div>
     </div>
   );

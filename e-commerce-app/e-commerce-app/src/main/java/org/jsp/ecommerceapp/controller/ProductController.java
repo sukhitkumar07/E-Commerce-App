@@ -7,6 +7,7 @@ import org.jsp.ecommerceapp.model.Product;
 import org.jsp.ecommerceapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/products")
+@CrossOrigin
 public class ProductController {
 	@Autowired
 	private ProductService productService;
@@ -49,7 +51,7 @@ public class ProductController {
 	}
 
 	@PostMapping("/find-by-merchant_id/{merchant_id}")
-	public ResponseEntity<ResponseStructure<List<Product>>> findByMerchantId(@RequestParam int merchant_id) {
+	public ResponseEntity<ResponseStructure<List<Product>>> findByMerchantId(@PathVariable int merchant_id) {
 		return productService.findByMerchantId(merchant_id);
 	}
 

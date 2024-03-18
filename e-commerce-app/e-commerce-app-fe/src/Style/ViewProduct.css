@@ -1,0 +1,17 @@
+.product {
+    display: flex;
+    justify-content:space-around;
+    align-items:start;
+    height: 300px;
+    padding: 20px;
+ }
+ 
+ .image img{
+     height: 200px;
+     width: 155px;
+ }
+ 
+ .content button{
+     margin: 0px 7px;
+     color: white;
+ }

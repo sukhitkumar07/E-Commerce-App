@@ -49,13 +49,14 @@ public class ProductService {
 			product1.setCategory(product.getCategory());
 			product1.setDescription(product.getDescription());
 			product1.setImage_url(product.getImage_url());
-			structure.setBody(productDao.saveProduct(product));
+			structure.setBody(productDao.saveProduct(product1));
 			structure.setMessage("product saved");
 			structure.setStatusCode(HttpStatus.ACCEPTED.value());
 			return new ResponseEntity<ResponseStructure<Product>>(structure, HttpStatus.ACCEPTED);
 		}
 		throw new IdNotFoundException();
 	}
+	
 
 	public ResponseEntity<ResponseStructure<Product>> fingById(int product_id) {
 		ResponseStructure<Product> structure = new ResponseStructure<>();
@@ -93,7 +94,7 @@ public class ProductService {
 			throw new IdNotFoundException();
 		}
 		structure.setBody(productDao.findByMerchantId(merchant_id));
-		structure.setMessage("Product is found bt brand");
+		structure.setMessage("Product is found ");
 		structure.setStatusCode(HttpStatus.OK.value());
 		return new ResponseEntity<ResponseStructure<List<Product>>>(structure, HttpStatus.OK);
 	}

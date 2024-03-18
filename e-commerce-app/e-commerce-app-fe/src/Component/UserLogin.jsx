@@ -15,12 +15,17 @@ axios.post(`http://localhost:8080/users/verify-by-email?email=${email}&password=
 .then((res)=>{
     alert("Login Successfull");
     console.log(res.data);
+    localStorage.setItem("User",JSON.stringify(res.data.body));
     navigate("/userhomepage");
 })
 .catch((rej)=>{
     alert("Invalid Credentials");
     console.log(rej);
 })
+}
+
+let signup=()=>{
+    navigate("/usersignup")
 }
 
     return ( 
@@ -37,7 +42,7 @@ axios.post(`http://localhost:8080/users/verify-by-email?email=${email}&password=
                 </Form.Group>
                 <Form.Group>
                     <button className='btn btn-success mx-5' onClick={signin}>Sign In</button>
-                    <button className='btn btn-danger mx-5'>Sign Up</button>
+                    <button className='btn btn-danger mx-5' onClick={signup}>Sign Up</button>
                 </Form.Group>
             </Form>
         </div>
