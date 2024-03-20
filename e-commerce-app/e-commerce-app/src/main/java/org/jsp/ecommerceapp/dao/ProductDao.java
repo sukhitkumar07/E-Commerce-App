@@ -25,6 +25,10 @@ public class ProductDao {
 	public List<Product> findByCategory(String category){
 		return productRepository.findByCategory(category);
 	}
+	
+	public List<Product> findByCategoryAndMerchantId(String category,int merchant_id){
+		return productRepository.findByCategoryAndMerchantId(category, merchant_id);
+	}
 	public List<Product> findByBrand(String brand){
 		return productRepository.findByBrand(brand);
 	}

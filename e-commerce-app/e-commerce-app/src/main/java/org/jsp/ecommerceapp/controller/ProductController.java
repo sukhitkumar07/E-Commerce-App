@@ -49,6 +49,11 @@ public class ProductController {
 	public ResponseEntity<ResponseStructure<List<Product>>> findByCategory(@PathVariable String category) {
 		return productService.findByCategory(category);
 	}
+	
+	@GetMapping("/find-by-category-merchant-id/{category}/{merchant_id}")
+	public ResponseEntity<ResponseStructure<List<Product>>> findByCategoryAndMerchantId(@PathVariable String category,@PathVariable int merchant_id) {
+		return productService.findByCategoryAndMerchantId(category, merchant_id);
+	}
 
 	@PostMapping("/find-by-merchant_id/{merchant_id}")
 	public ResponseEntity<ResponseStructure<List<Product>>> findByMerchantId(@PathVariable int merchant_id) {

@@ -30,3 +30,5 @@ public class Address {
 	@Column(nullable = false)
 	private int pincode;
 }
+
+
