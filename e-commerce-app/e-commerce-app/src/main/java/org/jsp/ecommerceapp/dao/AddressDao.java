@@ -1,5 +1,6 @@
 package org.jsp.ecommerceapp.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.jsp.ecommerceapp.model.Address;
@@ -20,4 +21,19 @@ public class AddressDao {
 	public Optional<Address> findById(int id) {
 		return addressRepository.findById(id);
 	}
+	
+	public List<Address> findByUserId(int user_id){
+		return addressRepository.findByUserId(user_id);
+	}
+	
+	public boolean deleteById(int id) {
+		Optional<Address> recAddress=addressRepository.findById(id);
+		if(recAddress.isPresent()) {
+			 addressRepository.delete(recAddress.get());
+			 return true;
+		}else {
+			return false;
+		}
+	}
 }
+

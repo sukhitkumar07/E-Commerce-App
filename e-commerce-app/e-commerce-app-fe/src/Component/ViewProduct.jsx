@@ -15,6 +15,7 @@ const ViewProduct = () => {
                 console.log(rej);
             })
     }, [])
+    
     let searchBybrand=(brand)=>{
         axios.get(`http://localhost:8080/products/find-by-brand/${brand}`)
         .then((res) => {
@@ -26,16 +27,15 @@ const ViewProduct = () => {
         })
     }
     
-    let searchBycategory=(category)=>{
-        axios.get(`http://localhost:8080/products/find-by-category/${category}}`)
-        .then((res) => {
-            console.log(category);
-            console.log(res.data.body)
-            setdata(res.data.body)
-        })
-        .catch((rej) => {
-            console.log(rej);
-        })
+    let searchBycategory = (category) => {
+        axios.get(`http://localhost:8080/products/find-by-category/${category}`)
+            .then((res) => {
+                console.log(res.data)
+                setdata(res.data.body)
+            })
+            .catch((rej) => {
+                console.log(rej);
+            })
     }
     return (
         <div className="disp">

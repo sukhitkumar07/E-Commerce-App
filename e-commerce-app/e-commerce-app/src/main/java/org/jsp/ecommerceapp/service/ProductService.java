@@ -115,5 +115,16 @@ public class ProductService {
 		return new ResponseEntity<ResponseStructure<List<Product>>>(structure, HttpStatus.OK);
 
 	}
+	
+	public ResponseEntity<ResponseStructure<String>> deleteById(int id) {
+		ResponseStructure<String> structure=new ResponseStructure<>();
+		if(productDao.deleteByid(id)) {
+			structure.setBody("Product Found");
+			structure.setMessage("Product Deleted");
+			structure.setStatusCode(HttpStatus.OK.value());
+			return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.OK);
+		}
+		throw new IdNotFoundException();
+	}
 }
 

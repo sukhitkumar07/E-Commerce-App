@@ -16,7 +16,7 @@ const MerchantHomePage = () => {
             <Route path="/productview" element={<ProductView />} />
             <Route path="/updatemerchant" element={<MerchantUpdate/>}/>
             <Route path="/addproduct" element={<AddProducts/>}/>
-            <Route path="/updateproduct" element={<UpdateProduct/>}/>
+            <Route path="/updateproduct/:id" element={<UpdateProduct/>}/>
          </Routes>
       </div>
    );

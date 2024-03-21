@@ -13,5 +13,6 @@ public interface ProductRepository extends JpaRepository<Product,Integer>{
 	public List<Product> findByBrand(String brand);
 	public List<Product> findAll();
 	public List<Product> findByCategoryAndMerchantId(String category,int merchant_id);
+	public boolean deleteById(int id);
 
 }

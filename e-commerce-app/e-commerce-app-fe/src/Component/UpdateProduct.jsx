@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import "../Style/UpdateProduct.css"
 const UpdateProduct = () => {
     let [id,setid]=useState("")
     let [name, setname] = useState("");
@@ -10,8 +12,24 @@ const UpdateProduct = () => {
     let [image_url, setimage_url] = useState("");
     let data = {id, name, brand, category, description, cost, image_url };
 
-
+    let param=useParams()
     useEffect(()=>{
+        axios.get(`http://localhost:8080/products/${param.id}`)
+        .then((res)=>{
+            console.log(res.data.body);
+            setid(res.data.body.id)
+            setname(res.data.body.name)
+            setbrand(res.data.body.brand)
+            setcategory(res.data.body.category)
+            setdescription(res.data.body.description)
+            setcost(res.data.body.cost)
+            setimage_url(res.data.body.image_url)
+            
+        })
+        .catch((rej)=>{
+            console.log(rej);
+            alert("Something went wrong")
+        })
     },[])
 
     let update=(e)=>{
@@ -19,7 +37,7 @@ const UpdateProduct = () => {
         axios.put(`http://localhost:8080/products`,data)
         .then((res)=>{
             console.log(res);
-            alert("Product Added successfully")
+            alert("Product Updated successfully")
         })
         .catch((rej)=>{
             console.log(rej);
@@ -28,10 +46,8 @@ const UpdateProduct = () => {
     }
 
     return (
-        <div className="updateroduct">
+        <div className="updateproduct">
             <form onSubmit={update} action="">
-            <label htmlFor="">Id:</label>
-                <input type="number" value={id} onChange={(e) => { setid(e.target.value) }} required placeholder="Enter the Name" />
                 <label htmlFor="">Name:</label>
                 <input type="text" value={name} onChange={(e) => { setname(e.target.value) }} required placeholder="Enter the Name" />
                 <label htmlFor="">Brand:</label>

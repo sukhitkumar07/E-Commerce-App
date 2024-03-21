@@ -40,6 +40,16 @@ public class ProductDao {
 		;
 	}
 	
+	public boolean deleteByid(int id) {
+		Optional<Product> recProduct=productRepository.findById(id);
+		if(recProduct.isPresent()) {
+			productRepository.deleteById(id);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 
 }
 
