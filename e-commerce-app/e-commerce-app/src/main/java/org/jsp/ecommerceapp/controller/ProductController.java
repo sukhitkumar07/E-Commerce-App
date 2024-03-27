@@ -71,4 +71,12 @@ public class ProductController {
 	public ResponseEntity<ResponseStructure<String>> deleteById(@PathVariable int id) {
 		return productService.deleteById(id);
 	}
+	@PutMapping("/{user_id}/{product_id}")
+	public ResponseEntity<ResponseStructure<String>> addtoCart(@PathVariable int user_id, @PathVariable int product_id){
+		return productService.addToCart(user_id,product_id);
+	}
+	@PutMapping("wishlist/{user_id}/{product_id}")
+	public ResponseEntity<ResponseStructure<String>> addToWishList(@PathVariable int user_id, @PathVariable int product_id){
+		return productService.addToWishList(user_id,product_id);
+}
 }

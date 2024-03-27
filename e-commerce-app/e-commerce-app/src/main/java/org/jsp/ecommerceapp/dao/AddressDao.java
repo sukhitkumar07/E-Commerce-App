@@ -8,32 +8,30 @@ import org.jsp.ecommerceapp.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 public class AddressDao {
 	@Autowired
 	private AddressRepository addressRepository;
-	
+
 	public Address saveAddress(Address address) {
 		return addressRepository.save(address);
 	}
-	
+
 	public Optional<Address> findById(int id) {
 		return addressRepository.findById(id);
 	}
-	
-	public List<Address> findByUserId(int user_id){
-		return addressRepository.findByUserId(user_id);
+
+	public List<Address> findAddressByUserId(int id) {
+		return addressRepository.findByUserId(id);
 	}
-	
+
 	public boolean deleteById(int id) {
-		Optional<Address> recAddress=addressRepository.findById(id);
-		if(recAddress.isPresent()) {
-			 addressRepository.delete(recAddress.get());
-			 return true;
-		}else {
+		Optional<Address> recAddress = addressRepository.findById(id);
+		if (recAddress.isPresent()) {
+			addressRepository.delete(recAddress.get());
+			return true;
+		} else {
 			return false;
 		}
 	}
 }
-

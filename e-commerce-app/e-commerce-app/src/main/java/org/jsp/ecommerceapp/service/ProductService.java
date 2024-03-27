@@ -5,13 +5,16 @@ import java.util.Optional;
 
 import org.jsp.ecommerceapp.dao.MerchantDao;
 import org.jsp.ecommerceapp.dao.ProductDao;
+import org.jsp.ecommerceapp.dao.UserDao;
 import org.jsp.ecommerceapp.dto.ResponseStructure;
 import org.jsp.ecommerceapp.excepton.IdNotFoundException;
 import org.jsp.ecommerceapp.excepton.ProductNotFoundException;
 import org.jsp.ecommerceapp.model.Merchant;
 import org.jsp.ecommerceapp.model.Product;
+import org.jsp.ecommerceapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,8 @@ public class ProductService {
 	private ProductDao productDao;
 	@Autowired
 	private MerchantDao merchantDao;
+	@Autowired
+	private UserDao userDao;
 
 	public ResponseEntity<ResponseStructure<Product>> saveProduct(Product product, int merchant_id) {
 		ResponseStructure<Product> structure = new ResponseStructure<>();
@@ -126,5 +131,33 @@ public class ProductService {
 		}
 		throw new IdNotFoundException();
 	}
+	
+	public ResponseEntity<ResponseStructure<String>> addToCart (int user_id,int product_id){
+		Optional<Product> recProduct = productDao.findById(product_id);
+		Optional<User> recUser = userDao.findById(user_id);
+		if(recProduct.isEmpty() || recUser.isEmpty())
+			throw new IllegalArgumentException("Invalid Product ID or User ID");
+		
+		recUser.get().getCart().add(recProduct.get());
+		userDao.saveUser(recUser.get());
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setBody("User and Product Found");
+		structure.setMessage("Added Product to cart");
+		structure.setStatusCode(HttpStatus.ACCEPTED.value());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.ACCEPTED);
+	}
+	public ResponseEntity<ResponseStructure<String>> addToWishList (int user_id,int product_id){
+		Optional<Product> recProduct = productDao.findById(product_id);
+		Optional<User> recUser = userDao.findById(user_id);
+		if(recProduct.isEmpty() || recUser.isEmpty())
+			throw new IllegalArgumentException("Invalid Product ID or User ID");
+		
+		recUser.get().getWishList().add(recProduct.get());
+		userDao.saveUser(recUser.get());
+		ResponseStructure<String> structure = new ResponseStructure<>();
+		structure.setBody("User and Product Found");
+		structure.setMessage("Added Product to Wishlist");
+		structure.setStatusCode(HttpStatus.ACCEPTED.value());
+		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.ACCEPTED);
 }
-
+}

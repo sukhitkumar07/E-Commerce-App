@@ -23,7 +23,8 @@ const UpdateUser = () => {
 
     }, [])
 
-    let update = () => {
+    let update = (e) => {
+        e.preventDefault()
         axios.put('http://localhost:8080/users', data)
             .then((res) => {
                 console.log(res.data);

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const UserNavBar = () => {
+   
     return (
         <nav id="navbar">
             <div className="logo">
@@ -17,6 +18,7 @@ const UserNavBar = () => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
+                        <Dropdown.Item href="/userhomepage/addaddress">Add Address</Dropdown.Item>
                         <Dropdown.Item href="/userhomepage/updateuser">Edit Account</Dropdown.Item>
                         <Dropdown.Item href="/">LogOut</Dropdown.Item>
                     </Dropdown.Menu>

@@ -2,9 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "../Style/ViewProduct.css"
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useNavigate } from "react-router-dom";
 const ViewProduct = () => {
     let [data, setdata] = useState([])
-
+    let navigate=useNavigate()
     useEffect(() => {
         axios.get('http://localhost:8080/products')
             .then((res) => {
@@ -37,6 +38,10 @@ const ViewProduct = () => {
                 console.log(rej);
             })
     }
+
+    let readData = (id) =>{
+        navigate(`/userhomepage/readdata/${id}`)
+      }
     return (
         <div className="disp">
             {
@@ -61,7 +66,7 @@ const ViewProduct = () => {
                                 <img src={x.image_url} alt="" />
                             </div>
                             <div className="desc">
-                                <h4 id="name">{x.name} || {x.brand}</h4>
+                                <h4 id="name" onClick={()=>{readData(x.id)}}>{x.name} || {x.brand}</h4>
                                 <span id="cost"><sup><b>₹</b></sup> {x.cost}</span>
                                <br />
                                <span id="desc">{x.description}</span>

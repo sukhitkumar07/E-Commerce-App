@@ -21,10 +21,10 @@ public class Address {
 	@Column(nullable = false)
 	private String landmark;
 	@Column(nullable = false)
-	private String buildingName;
+	private String building_name;
 	@Column(nullable = false)
-	private String houseNumber;
-	private String addressType;
+	private String house_number;
+	private String address_type;
 	@Column(nullable = false)
 	private String city;
 	@Column(nullable = false)
@@ -32,7 +32,7 @@ public class Address {
 	@Column(nullable = false)
 	private String country;
 	@Column(nullable = false)
-	private int pincode;
+	private String pincode;
 	@ManyToOne
 	@JoinColumn
 	@JsonIgnore
